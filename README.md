@@ -1,1 +1,9 @@
 # capstone-project-part-4
+Then include:Overview – why you chose Track C.Setup – dependencies (scikit-learn, joblib, requests, jsonschema).Usage – how to run the script.Results – show sample validated JSON outputs.Guardrails – mention PII redaction before sending to LLM.
+Why Temperature = 0At temperature=0, the LLM produces deterministic, reproducible outputs.This is crucial because JSON must be consistent and schema-valid.At higher temperatures (e.g., 0.7), the LLM may add creative variations, which risks breaking schema validation.
+Temperature Comparison TaskFor each of your three test inputs:Run once with temperature=0 → consistent JSON.Run once with temperature=0.7 → may vary wording, structure, or add extra fields.In your README, create a table like:Input FeaturesOutput (temp=0)Output (temp=0.7)Key Difference[5.1, 3.5, 1.4, 0.2]Strict JSONJSON with extra explanation textDeterminism vs variability
+Next StepYou now have:Reusable API functionPipeline codeSystem & user promptsTemperature comparison planWould you like me to merge all these pieces into one complete notebook-style script (with sections for setup, model prediction, LLM call, schema validation, and results logging), so you can run it directly in C
+At the top:CopyChosen Track: (A) Structured JSON Extraction
+Chosen Track: (B) Tabular Record Batch SortingInclude your system prompt and user prompt template.Explain why temperature=0 ensures reproducibility.Show sample validated JSON outputs.Add a comparison table for temperature=0 vs temperature=0.7.
+Show the guardrail function.Explain why regex checks are important for PII protection.Demonstrate with one blocked input and one allowed input.Mention that this guardrail runs before every LLM call.
+You’ll need to summarize results like this:InputLLM OutputValid JSON (Pass/Fail)Guardrail ResultAlice record{...}PassBlocked (PII detected)Bob record{...}PassBlocked (PII detected)Charlie record{...}PassBlocked (PII detected)
